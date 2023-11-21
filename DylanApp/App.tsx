@@ -1,19 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { Onboarding } from './components/onboarding/Onboarding';
+import { colors } from './assets/Colors';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={styles.body}>
+      <Onboarding />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  body: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.background,
     alignItems: 'center',
     justifyContent: 'center',
   },
