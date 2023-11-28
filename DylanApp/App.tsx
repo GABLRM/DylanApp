@@ -12,7 +12,7 @@ const Match = () => {
     <View style={styles.container}>
       <Image source={require("./assets/images/testWallpaper.jpg")} style={styles.imageBackground} />
       <StatusBar style="auto" />
-      <MatchComponent />
+      <MatchComponent/>
     </View>
   )
 }
