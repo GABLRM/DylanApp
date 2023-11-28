@@ -20,17 +20,16 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Onboarding />
-      <View style={styles.container}>
-        <Text>coucou</Text>
-        <StatusBar style="auto" />
-        <TouchableOpacity onPress={handleShowNotification}>
-          <Notification
-            message={notificationMessage}
-            visible={visible}
-            onClose={handleCloseNotification}
-          />
-        </TouchableOpacity>
-      </View>
+      <Text>coucou</Text>
+      <StatusBar style="auto" />
+      <TouchableOpacity onPress={handleShowNotification}>
+        <Notification
+          message={notificationMessage}
+          visible={visible}
+          onClose={handleCloseNotification}
+          closeButton={true}
+        />
+      </TouchableOpacity>
     </View>
   );
 }
