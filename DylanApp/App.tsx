@@ -1,11 +1,25 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Onboarding } from './components/onboarding/Onboarding';
 import { colors } from './assets/Colors';
 import Notification from "./components/notificationsComponent";
+import MatchComponent from './components/MatchComponent';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useFonts } from 'expo-font';
+import { NavigationContainer } from '@react-navigation/native';
 
-export default function App() {
+const Match = () => {
+  return (
+    <View style={styles.container}>
+      <Image source={require("./assets/images/testWallpaper.jpg")} style={styles.imageBackground} />
+      <StatusBar style="auto" />
+      <MatchComponent />
+    </View>
+  )
+}
+
+const NotificationScreen = () => {
   const [visible, setVisible] = useState(true);
   const [notificationMessage, setNotificationMessage] = useState("");
 
@@ -19,7 +33,6 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Onboarding />
       <Text>coucou</Text>
       <StatusBar style="auto" />
       <TouchableOpacity onPress={handleShowNotification}>
@@ -31,6 +44,23 @@ export default function App() {
         />
       </TouchableOpacity>
     </View>
+  )
+}
+
+const Stack = createNativeStackNavigator();
+
+export default function App() {
+  const [fontsLoaded] = useFonts({
+    'Lilita-One': require('./assets/fonts/LilitaOne-Regular.ttf'),
+  });
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Onboarding" component={Onboarding} />
+        <Stack.Screen name="Match" component={Match} options={{ headerShown: false }} />
+        <Stack.Screen name="Notification" component={NotificationScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -40,5 +70,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  imageBackground: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
 });
