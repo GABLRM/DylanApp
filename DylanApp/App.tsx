@@ -14,7 +14,7 @@ const Match = () => {
     <View style={styles.container}>
       <Image source={require("./assets/images/testWallpaper.jpg")} style={styles.imageBackground} />
       <StatusBar style="auto" />
-      <MatchComponent/>
+      <MatchComponent />
     </View>
   )
 }
@@ -55,9 +55,9 @@ export default function App() {
   });
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Onboarding" component={Onboarding} />
-        <Stack.Screen name="Match" component={Match} options={{ headerShown: false }} />
+        <Stack.Screen name="Match" component={Match} />
         <Stack.Screen name="Notification" component={NotificationScreen} />
       </Stack.Navigator>
     </NavigationContainer>
