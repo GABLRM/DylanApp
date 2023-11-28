@@ -24,6 +24,7 @@ export default function App() {
           message={notificationMessage}
           visible={visible}
           onClose={handleCloseNotification}
+          closeButton={true}
         />
       </TouchableOpacity>
     </View>
