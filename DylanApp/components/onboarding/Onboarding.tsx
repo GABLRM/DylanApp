@@ -5,6 +5,7 @@ import { OnboardingItem } from './OnboardingItem';
 import { Paginator } from './Paginator';
 import { onboardingSlides } from './OnboardingSlides';
 import { NextButton } from './NextButton';
+import { OnboardingBottom } from './OnboardingBottom';
 
 export const Onboarding = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -22,8 +23,6 @@ export const Onboarding = () => {
     const scrollTo = () => {
         if (currentIndex < onboardingSlides.length - 1) {
             (slidesRef as any).current.scrollToIndex({index: currentIndex + 1})
-        } else {
-            console.log("last item")
         }
     }
 
@@ -47,9 +46,11 @@ export const Onboarding = () => {
                     ref={slidesRef}
                 />
             </View>
-            <NextButton percentage={(currentIndex + 1) * (100 / onboardingSlides.length)} scrollTo={ scrollTo } />
-            <Paginator items={onboardingSlides} scrollX={scrollX} />
-            
+            {/* <View style={{ flex: 1, }} >
+                <NextButton percentage={(currentIndex + 1) * (100 / onboardingSlides.length)} scrollTo={ scrollTo } />
+                <Paginator items={onboardingSlides} scrollX={scrollX} />
+            </View> */}
+            <OnboardingBottom currentIndex={ currentIndex } scrollX={ scrollX } scrollTo={ scrollTo }/>            
         </View>
     )
 }
