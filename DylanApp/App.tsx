@@ -1,20 +1,46 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, View } from 'react-native';
+import MatchComponent from './components/MatchComponent';
+import { colors } from "./assets/Colors"
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useFonts } from 'expo-font';
 
-export default function App() {
+const Match = () => {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Image source={require("./assets/images/testWallpaper.jpg")} style={styles.imageBackground} />
       <StatusBar style="auto" />
+      <MatchComponent />
     </View>
+  )
+}
+
+const Stack = createNativeStackNavigator();
+
+export default function App() {
+  const [fontsLoaded] = useFonts({
+    'Lilita-One': require('./assets/fonts/LilitaOne-Regular.ttf'),
+  });
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        {/* <Stack.Screen name="Onboarding" component={() => null} /> */}
+        <Stack.Screen name="Match" component={Match} options={{ headerShown: false }} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.background,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  imageBackground: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
 });
