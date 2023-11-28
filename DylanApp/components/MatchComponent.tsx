@@ -4,13 +4,8 @@ import { View, StyleSheet, Text, Image, Dimensions } from "react-native";
 import FullButtonComponent from "./fullButtonComponent";
 import BorderButtonComponent from "./borderButtonComponent";
 import { colors } from "../assets/Colors"
-import { useFonts } from 'expo-font';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 const MatchComponent = () => {
-    
-
-
     return (
         <View style={styles.globalContainer}>
             <Image
