@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "expo": "^49.0.20",
+    "react-toastify": "^9.1.3"
+  }
+}
