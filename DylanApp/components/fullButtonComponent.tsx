@@ -23,8 +23,7 @@ const FullButtonComponent = (props: Props) => {
 const styles = StyleSheet.create({
     button: {
         width: 300,
-        height: 45,
-        backgroundColor: '#ff5733',
+        height: 55,
         borderRadius: 15,
         justifyContent: "center",
         alignItems: "center",
