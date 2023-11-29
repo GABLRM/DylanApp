@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Onboarding } from './components/onboarding/Onboarding';
 import { colors } from './assets/Colors';
 import Notification from "./components/notificationsComponent";
@@ -12,7 +12,6 @@ import { NavigationContainer } from '@react-navigation/native';
 const Match = () => {
   return (
     <View style={styles.container}>
-      <Image source={require("./assets/images/testWallpaper.jpg")} style={styles.imageBackground} />
       <StatusBar style="auto" />
       <MatchComponent />
     </View>
@@ -70,9 +69,5 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  imageBackground: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
   },
 });

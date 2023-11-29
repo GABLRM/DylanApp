@@ -4,6 +4,8 @@ import { View, StyleSheet, Text, Image, Dimensions } from "react-native";
 import FullButtonComponent from "./fullButtonComponent";
 import BorderButtonComponent from "./borderButtonComponent";
 import { colors } from "../assets/Colors"
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
 
 const MatchComponent = () => {
     return (
@@ -24,6 +26,9 @@ const MatchComponent = () => {
                             <Image
                                 style={styles.imageUn}
                                 source={require('../assets/images/dodge.png')} />
+                            <View style={styles.innerImageContainer}>
+                                <FontAwesomeIcon icon={faPaw} size={30} style={styles.paw} />
+                            </View>
                             <Image
                                 style={styles.imageDeux}
                                 source={require('../assets/images/dodge_glasses.png')} />
@@ -116,7 +121,23 @@ const styles = StyleSheet.create({
         height: 100,
         borderRadius: 50,
         borderWidth: 3,
-        borderColor: colors.background
+        borderColor: colors.background,
+    },
+    innerImageContainer: {
+        flex: 1,
+        position: 'absolute',
+        alignItems: 'center',
+        width: 50,
+        height: 50,
+        zIndex: 100,
+        borderRadius: 50,
+        backgroundColor: colors.background,
+    },
+    paw: {
+        position: 'absolute',
+        top: 10,
+        zIndex: 100,
+        color: colors.white,
     },
     margin: {
         margin: 15,
