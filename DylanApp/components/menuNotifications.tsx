@@ -4,9 +4,10 @@ import { LinearGradient } from "expo-linear-gradient";
 
 type Message = {
     petName: string;
+    pathPetPic: any;
 }
 
-const MenuNotifications = ({petName}: Message) => {
+const MenuNotifications = ({petName, pathPetPic}: Message) => {
   return (
     <LinearGradient
       colors={["#4A90E2", "#28A544"]}
@@ -16,12 +17,12 @@ const MenuNotifications = ({petName}: Message) => {
     >
       <View style={styleMenu.boxNotification}>
         <Image
-          source={require("../assets/chien.png")}
+          source={pathPetPic}
           style={styleMenu.image}
         />
         <View style={styleMenu.boxText}>
           <Text style={styleMenu.textNotification}>
-            Your dog, {petName}, has a new match!
+            Your dog, <Text style={{fontWeight: "400"}}>{petName}</Text>, has a new match!
           </Text>
           <View style={styleMenu.littleButton}>
             <Text style={styleMenu.littleButtonText}>Send a message!</Text>
@@ -35,8 +36,8 @@ const MenuNotifications = ({petName}: Message) => {
 const styleMenu = StyleSheet.create({
   linearGradient: {
     display: "flex",
-    padding: 2.5,
-    borderRadius: 5,
+    padding: 1,
+    borderRadius: 15,
   },
   image: {
     width: 70,
@@ -44,10 +45,10 @@ const styleMenu = StyleSheet.create({
     borderRadius: 50,
   },
   boxNotification: {
-    borderRadius: 4,
+    borderRadius: 15,
     flexDirection: "row",
     gap: 10,
-    padding: 10,
+    padding: 15,
     backgroundColor: "#353E4A",
     paddingVertical: "auto",
   },

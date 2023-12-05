@@ -23,13 +23,28 @@ const Match = () => {
 // const setPetName = (petName: string) => {
 //   return petName;
 // }
+// const setPathPetPic = (pathPetPic: string) => {
+//   return pathPetPic;
+// }
+
+const petData = [
+  {petName: "Dylan", pathPetPic: require("./assets/chien.png"),},
+  {petName: "Dylan2", pathPetPic: require("./assets/chien.png"),},
+  {petName: "Dylan3", pathPetPic: require("./assets/chien.png"),},
+
+];
 
 const MenuNotificationsScreen = () => {
   return (
+    // !! TODO: add back button + add padding between notifications 
     <View style={styles.container}>
-      <StatusBar style="auto" />
-      <MenuNotifications 
-        petName="Dylan"/>
+      {petData.map((item, index) => (
+        <MenuNotifications
+          key={index}
+          petName={item.petName}
+          pathPetPic={item.pathPetPic}
+        />
+      ))}
     </View>
   );
 };
@@ -71,7 +86,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="MenuNotification" component={MenuNotificationsScreen} />
+        <Stack.Screen
+          name="MenuNotification"
+          component={MenuNotificationsScreen}
+        />
         <Stack.Screen name="Notification" component={NotificationScreen} />
         <Stack.Screen name="Match" component={Match} />
         <Stack.Screen name="Onboarding" component={Onboarding} />
