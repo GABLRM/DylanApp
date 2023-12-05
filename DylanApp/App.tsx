@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Onboarding } from './components/onboarding/Onboarding';
-import { colors } from './assets/Colors';
+import React, { useState } from "react";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Onboarding } from "./components/onboarding/Onboarding";
+import { colors } from "./assets/Colors";
 import Notification from "./components/notificationsComponent";
-import MatchComponent from './components/MatchComponent';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useFonts } from 'expo-font';
-import { NavigationContainer } from '@react-navigation/native';
+import MatchComponent from "./components/MatchComponent";
+import MenuNotifications from "./components/menuNotifications";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useFonts } from "expo-font";
+import { NavigationContainer } from "@react-navigation/native";
 
 const Match = () => {
   return (
@@ -15,8 +16,23 @@ const Match = () => {
       <StatusBar style="auto" />
       <MatchComponent />
     </View>
-  )
-}
+  );
+};
+
+// !!TODO: Fix this with the realpetname with the API
+// const setPetName = (petName: string) => {
+//   return petName;
+// }
+
+const MenuNotificationsScreen = () => {
+  return (
+    <View style={styles.container}>
+      <StatusBar style="auto" />
+      <MenuNotifications 
+        petName="Dylan"/>
+    </View>
+  );
+};
 
 const NotificationScreen = () => {
   const [visible, setVisible] = useState(true);
@@ -43,21 +59,22 @@ const NotificationScreen = () => {
         />
       </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    'Lilita-One': require('./assets/fonts/LilitaOne-Regular.ttf'),
+    "Lilita-One": require("./assets/fonts/LilitaOne-Regular.ttf"),
   });
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="MenuNotification" component={MenuNotificationsScreen} />
+        <Stack.Screen name="Notification" component={NotificationScreen} />
         <Stack.Screen name="Match" component={Match} />
         <Stack.Screen name="Onboarding" component={Onboarding} />
-        <Stack.Screen name="Notification" component={NotificationScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -67,7 +84,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
