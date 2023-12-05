@@ -21,7 +21,7 @@ const getTabIcon = (name: string) => {
 }
 
 export const NavbarComponent = ({
-    state
+    state, navigation
 }: BottomTabBarProps) => {
     const screens = state.routes
 
@@ -33,8 +33,8 @@ export const NavbarComponent = ({
     return (
         <View style={styles.navbarContainer}>
             <View style={styles.navbarInnerContainer}>
-                {screens.map((route, index) => (
-                    <TouchableOpacity style={styles.navbarButton} onPress={HomeBottomTab}>
+                {screens.map((route) => (
+                    <TouchableOpacity style={styles.navbarButton} onPress={() => navigation.navigate(route.name)}>
                         {getTabIcon(route.name)}
                         <Text style={styles.navbarText}>{route.name}</Text>
                     </TouchableOpacity>
