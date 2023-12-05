@@ -91,7 +91,6 @@ const styles = StyleSheet.create({
     },
     title: {
         textAlign: "center",
-        fontFamily: "Lilita-One",
         color: "#fff",
         fontSize: 35,
         marginBottom: 5,
@@ -99,7 +98,6 @@ const styles = StyleSheet.create({
     subTitle: {
         color: colors.light,
         textAlign: "center",
-        fontFamily: "Lilita-One",
         marginBottom: 50,
     },
     imageContainer: {
@@ -134,7 +132,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.background,
     },
     paw: {
-        position: 'absolute',
+        position: 'absolute',   
         top: 10,
         zIndex: 100,
         color: colors.white,
