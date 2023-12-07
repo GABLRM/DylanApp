@@ -1,36 +1,38 @@
-import React from "react"
+import React, { useState } from "react"
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Alert } from "react-native"
 import { colors } from "../assets/Colors"
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
 import { faHeart, faUser, faComment } from "@fortawesome/free-regular-svg-icons"
-import { faHouse } from "@fortawesome/free-solid-svg-icons"
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs"
-import HomeBottomTab from "../navigation/HomeBottomTab"
 
-const getTabIcon = (name: string) => {
-    switch (name) {
-        case "Matches":
-            return <FontAwesomeIcon icon={faHeart} size={25} style={styles.navbarIcon} />
-        case "Notifications":
-            return <FontAwesomeIcon icon={faComment} size={25} style={styles.navbarIcon} />
-        case "Profile":
-            return <FontAwesomeIcon icon={faUser} size={25} style={styles.navbarIcon} />
-        default:
-            return null;
-    }
-}
-
-export const NavbarComponent = ({
-    state, navigation
-}: BottomTabBarProps) => {
+export const NavbarComponent = ({ state, navigation }: BottomTabBarProps) => {
     const screens = state.routes
+    const [focusedIndex, setFocusedIndex] = useState<number | 0>(0);
+
+    const navigate = (index: number, routeName: string) => {
+        setFocusedIndex(index);
+        navigation.navigate(routeName);
+    };
+
+    const getTabIcon = (name: string, isFocused: boolean) => {
+        switch (name) {
+            case "Matches":
+                return <FontAwesomeIcon icon={faHeart} size={25} style={{ color: isFocused ? colors.blue : colors.white }} />
+            case "Notifications":
+                return <FontAwesomeIcon icon={faComment} size={25} style={{ color: isFocused ? colors.blue : colors.white }} />
+            case "Profile":
+                return <FontAwesomeIcon icon={faUser} size={25} style={{ color: isFocused ? colors.blue : colors.white }} />
+            default:
+                return null;
+        }
+    }
 
     return (
         <View style={styles.navbarContainer}>
             <View style={styles.navbarInnerContainer}>
-                {screens.map((route) => (
-                    <TouchableOpacity style={styles.navbarButton} onPress={() => navigation.navigate(route.name)}>
-                        {getTabIcon(route.name)}
+                {screens.map((route, index) => (
+                    <TouchableOpacity style={styles.navbarButton} onPress={() => navigate(index, route.name)}>
+                        {getTabIcon(route.name, index === focusedIndex)}
                         <Text style={styles.navbarText}>{route.name}</Text>
                     </TouchableOpacity>
                 ))}
@@ -40,15 +42,6 @@ export const NavbarComponent = ({
 }
 
 const styles = StyleSheet.create({
-    globalContainer: {
-        position: 'absolute',
-        backgroundColor: 'transparent',
-        width: Dimensions.get("window").width,
-        height: Dimensions.get("window").height,
-        flex: 1,
-        justifyContent: "flex-end",
-        alignItems: "center"
-    },
     navbarContainer: {
         backgroundColor: colors.background,
         position: 'absolute',
@@ -75,10 +68,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center"
 
-    },
-    navbarIcon: {
-        color: colors.white,
-        marginBottom: 5,
     },
     navbarText: {
         color: colors.white,
