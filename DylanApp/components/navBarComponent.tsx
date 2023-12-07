@@ -25,11 +25,6 @@ export const NavbarComponent = ({
 }: BottomTabBarProps) => {
     const screens = state.routes
 
-
-    const alertPress = () => {
-        Alert.alert("Hello there from the navbar!")
-    }
-
     return (
         <View style={styles.navbarContainer}>
             <View style={styles.navbarInnerContainer}>

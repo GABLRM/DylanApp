@@ -5,31 +5,15 @@ import { colors } from "../assets/Colors"
 export const ProfileComponent = () => {
     return (
         <View style={styles.globalContainer}>
-            <View style={styles.profileContainer}>
-                <Image style={styles.profilePicture} source={require("../assets/images/dodge_glasses.png")} />
-                <Text style={styles.profileName}>Dog.name</Text>
-                <Text style={styles.profileDescription}>Dog.description</Text>
-            </View>
+            <Image style={styles.profilePicture} source={require("../assets/images/dodge_glasses.png")} />
             <View style={styles.profileDetailsContainer}>
                 <View style={styles.profileDetails}>
-                    <View style={styles.profileDetailsLeft}>
-                        <Text style={styles.detailsTitle}>Sexe :</Text>
-                        <Text style={styles.detailsDescription}>Dog.sexe</Text>
+                    <View style={styles.profileMain}>
+                        <Text style={styles.profileName}>Dog.name</Text>
+                        <Text style={styles.detailsDescription}>Dog.age yo, Dog.sexe, Dog.Race</Text>
                     </View>
-                    <View style={styles.profileDetailsRight}>
-                        <Text style={styles.detailsTitle}>Race :</Text>
-                        <Text style={styles.detailsDescription}>Dog.race</Text>
-                    </View>
-                </View>
-                <View style={styles.profileDetails}>
-                    <View style={styles.profileDetailsLeft}>
-                        <Text style={styles.detailsTitle}>Age :</Text>
-                        <Text style={styles.detailsDescription}>Dog.age</Text>
-                    </View>
-                    <View style={styles.profileDetailsRight}>
-                        <Text style={styles.detailsTitle}>Categorie :</Text>
-                        <Text style={styles.detailsDescription}>Dog.categorie</Text>
-                    </View>
+                    <Text style={styles.detailsTitle}>About Me</Text>
+                    <Text style={styles.detailsAboutMe}>Dog.description</Text>
                 </View>
             </View>
         </View>
@@ -46,16 +30,11 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-    profileContainer: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-    },
     profilePicture: {
-        borderRadius: 100,
-        width: 200,
-        height: 200,
+        marginTop: 60,
+        borderRadius: 20,
+        width: 300,
+        height: 300,
     },
     profileName: {
         marginTop: 10,
@@ -65,38 +44,39 @@ const styles = StyleSheet.create({
     },
     profileDescription: {
         textAlign: "center",
-        marginTop: 20,
+        marginTop: 5,
         color: colors.white,
         fontSize: 20,
         fontWeight: "200",
     },
     profileDetailsContainer: {
         flex: 1,
+        marginTop: 20,
         flexDirection: "column",
         width: Dimensions.get("window").width,
     },
     profileDetails: {
         flex: 1,
-        flexDirection: "row",
+        flexDirection: "column",
         marginHorizontal: 40,
         height: "100%",
-        justifyContent: "space-between"
     },
-    profileDetailsLeft: {
-        flexDirection: "column",
-        alignSelf: "flex-start",
+    profileMain: {
+        marginBottom: 25
     },
     detailsTitle: {
-        fontSize: 35,
+        fontSize: 25,
         color: colors.white,
         fontWeight: "600",
     },
     detailsDescription: {
-        fontSize: 25,
-        fontWeight: "300",
+        fontSize: 20,
+        marginBottom: 20,
         color: colors.white,
     },
-    profileDetailsRight : {
-        flexDirection: "column",
-    }
+    detailsAboutMe: {
+        color: colors.white,
+        fontWeight: "300",
+        fontSize: 20,
+    },
 })
