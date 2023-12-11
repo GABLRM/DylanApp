@@ -2,9 +2,9 @@ import React from 'react';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MatchScreen } from "../screens/MatchScreen";
 import NavbarComponent from '../components/navBarComponent';
-import { NotificationScreen } from "../screens/NotificationScreen";
 import { ProfileComponent } from '../components/profileComponent';
 import { ProfileScreen } from '../screens/ProfileScreen';
+import { NotificationScreen } from '../screens/NotificationsScreen';
 
 const Tabs = createBottomTabNavigator();
 
