@@ -50,7 +50,6 @@ const styleNotification = StyleSheet.create({
     backgroundColor: "#353E4A",
     padding: 10,
     borderRadius: 4,
-    borderColor: "red",
     flexDirection: "row",
     gap: 5,
   },

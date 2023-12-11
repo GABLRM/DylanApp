@@ -10,6 +10,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="MenuNotification" component={MenuNotificationsScreen}/>
         <Stack.Screen name="Home" component={HomeBottomTab} />
         <Stack.Screen name="Onboarding" component={Onboarding} />
       </Stack.Navigator>
