@@ -9,7 +9,7 @@ type Message = {
   closeButton: boolean;
 };
 
-const Notification = ({ message, visible, onClose, closeButton }: Message) => {
+export const Notification = ({ message, visible, onClose, closeButton }: Message) => {
   if (!visible) {
     return null;
   }
@@ -33,13 +33,7 @@ const Notification = ({ message, visible, onClose, closeButton }: Message) => {
         <Text style={styleNotification.textNotification}>{message}</Text>
         {message && (
           <Text
-            style={{
-              color: "white",
-              fontSize: 20,
-              fontWeight: "100",
-              paddingVertical: "auto",
-              marginTop: -8,
-            }}
+            style={styleNotification.alertNotification}
             onPress={onClose}
           >
             {"x"}
@@ -73,6 +67,13 @@ const styleNotification = StyleSheet.create({
     padding: 2.5,
     borderRadius: 5,
   },
+  alertNotification: {
+      color: "white",
+      fontSize: 20,
+      fontWeight: "100",
+      paddingVertical: "auto",
+      marginTop: -8,
+    },
 });
 
 export default Notification;
