@@ -1,13 +1,56 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { colors } from "../assets/Colors";
 
 type Message = {
     petName: string;
     pathPetPic: any;
 }
 
-const MenuNotifications = ({petName, pathPetPic}: Message) => {
+// !!TODO: Fix this with the realpetname with the API
+// const setPetName = (petName: string) => {
+//   return petName;
+// }
+// const setPathPetPic = (pathPetPic: string) => {
+//   return pathPetPic;
+// }
+
+const textReturn = "<    Back";
+
+const petData = [
+  { petName: "Dylaqfgshtdjykufthdsdfqsqferzgsetydrftukn1", pathPetPic: require("../assets/chien.png") },
+  { petName: "Dylan2", pathPetPic: require("../assets/chien.png") },
+  { petName: "Dylan3", pathPetPic: require("../assets/chien.png") },
+];
+
+
+export const MenuNotificationsScreen = (navigation: any) => {
+  return (
+    <View style={styleMenu.container}>
+      <TouchableOpacity onPress={() => navigation.navigate('Card') } style={styleMenu.textBack}>
+        <Text style={styleMenu.textColor}>{textReturn}</Text>
+      </TouchableOpacity>
+      <View style={styleMenu.containerNotifications}>
+        {petData.map((item, index) => (
+          <View key={index} style={{width: "100%"}}>
+            <MenuNotifications
+              key={index}
+              petName={item.petName}
+              pathPetPic={item.pathPetPic}
+            />
+          </View>
+        ))}
+      </View>
+    </View>
+  );
+};
+
+export const MenuNotifications = ({petName, pathPetPic}: Message) => {
+  const alertPress = () => {
+    alert("Your pet can get a new friend!");
+  }
+  
   return (
     <LinearGradient
       colors={["#4A90E2", "#28A544"]}
@@ -25,7 +68,7 @@ const MenuNotifications = ({petName, pathPetPic}: Message) => {
             Your dog, <Text style={{fontWeight: "400"}}>{petName}</Text>, has a new match!
           </Text>
           <View style={styleMenu.littleButton}>
-            <Text style={styleMenu.littleButtonText}>Send a message!</Text>
+            <Text style={styleMenu.littleButtonText} onPress={alertPress}>Send a message!</Text>
           </View>
         </View>
       </View>
@@ -55,6 +98,7 @@ const styleMenu = StyleSheet.create({
   boxText: {
     gap: 5,
     marginVertical: 10,
+    width: "70%",
   },
   textNotification: {
     color: "#ffffff",
@@ -80,6 +124,31 @@ const styleMenu = StyleSheet.create({
     paddingVertical: "auto",
     paddingHorizontal: 10,
     flex: 0,
+  },
+  textBack: {
+    position: "absolute",
+    top: 50,
+    left: 30,
+    zIndex: 1,
+  },
+  textColor: {
+    color: "#fff",
+    fontSize: 20,
+    fontWeight: "300",
+  },
+  container: {
+    flex: 1,
+    backgroundColor: colors.background,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  containerNotifications: {
+    flex: 1,
+    backgroundColor: colors.background,
+    alignItems: "center",
+    gap: 11,
+    marginTop: 100,
+    width: "87%",
   },
 });
 
