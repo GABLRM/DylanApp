@@ -57,9 +57,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Onboarding" component={Onboarding} />
         <Stack.Screen name="MenuNotification" component={MenuNotificationsScreen}/>
         <Stack.Screen name="Match" component={Match} />
-        <Stack.Screen name="Onboarding" component={Onboarding} />
       </Stack.Navigator>
     </NavigationContainer>
   );

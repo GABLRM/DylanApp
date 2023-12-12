@@ -39,5 +39,6 @@ export const OnboardingBottom = (data: Data) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        gap: 20,
     }
 })
