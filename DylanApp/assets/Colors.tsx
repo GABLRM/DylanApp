@@ -4,5 +4,4 @@ export const colors = {
     light: '#E2DAEC',
     white: '#ffffff',
     blue: '#4A90E2',
-    green: '#28A544',
 }
