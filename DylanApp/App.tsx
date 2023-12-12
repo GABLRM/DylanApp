@@ -19,7 +19,6 @@ const Match = () => {
   );
 };
 
-
 const NotificationScreen = () => {
   const [visible, setVisible] = useState(true);
   const [notificationMessage, setNotificationMessage] = useState("");
@@ -57,9 +56,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Match" component={Match} />
         <Stack.Screen name="Onboarding" component={Onboarding} />
         <Stack.Screen name="MenuNotification" component={MenuNotificationsScreen}/>
-        <Stack.Screen name="Match" component={Match} />
       </Stack.Navigator>
     </NavigationContainer>
   );
