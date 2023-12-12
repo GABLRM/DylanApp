@@ -1,22 +1,36 @@
 import React from "react"
-import { View, Text, StyleSheet, Dimensions, Image } from "react-native"
+import { View, Text, StyleSheet, Dimensions, Image, ScrollView } from "react-native"
 import { colors } from "../assets/Colors"
 
-export const ProfileComponent = () => {
+type Props = {
+    name: string
+    age: string
+    sexe: string
+    race: string
+    description: string
+    imageLink: string
+}
+
+export const ProfileComponent = (props: Props) => {
     return (
         <View style={styles.globalContainer}>
-            <Image style={styles.profilePicture} source={require("../assets/images/dodge_glasses.png")} />
+            <Image style={styles.profilePicture} source={{uri:  props.imageLink ,}} />
             <View style={styles.profileDetailsContainer}>
                 <View style={styles.profileDetails}>
                     <View style={styles.profileMain}>
-                        <Text style={styles.profileName}>Dog.name</Text>
-                        <Text style={styles.detailsDescription}>Dog.age yo, Dog.sexe, Dog.Race</Text>
+                        <Text style={styles.profileName}>{ props.name.replaceAll(" réservée", "").replaceAll(" réservé", "") }</Text>
+                        <Text style={styles.detailsDescription}>{ props.age }, { props.sexe }</Text>
+                        <Text style={styles.detailsDescription}>Race : { props.race }</Text>
                     </View>
                     <Text style={styles.detailsTitle}>About Me</Text>
-                    <Text style={styles.detailsAboutMe}>Dog.description</Text>
+                    <ScrollView
+                        showsVerticalScrollIndicator={false}
+                        >
+                        <Text style={styles.detailsAboutMe}>{ props.description.replaceAll("<br />", "") }</Text>
+                    </ScrollView>
                 </View>
             </View>
-        </View>
+        </View> 
     )
 }
 
@@ -26,6 +40,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         width: Dimensions.get("window").width,
         height: Dimensions.get("window").height,
+        paddingBottom: 100,
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
