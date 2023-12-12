@@ -7,7 +7,7 @@ import { colors } from "../assets/Colors";
 
 type Props = {
     name: string;
-    source: any;
+    source: string;
     sexe: string;
     race: string;
     age: string;
@@ -18,7 +18,7 @@ const { height, width } = Dimensions.get("screen")
 export const Card = (props: Props) => {
     return (
         <View style={styles.card}>
-            <Image source={props.source} style={styles.image} />
+            <Image source={{uri:  props.source,}} style={styles.image} />
             <LinearGradient
                 colors={['transparent', 'rgba(0,0,0,.9)']}
                 style={styles.linearGradient}
