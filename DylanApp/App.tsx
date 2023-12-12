@@ -6,6 +6,7 @@ import HomeBottomTab from './navigation/HomeBottomTab';
 import { MenuNotificationsScreen } from './components/menuNotifications';
 import 'react-native-gesture-handler'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { MatchScreen } from './screens/MatchScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Home" component={HomeBottomTab} />
+          <Stack.Screen name="Match" component={MatchScreen} />
           {/* <Stack.Screen name="Onboarding" component={Onboarding} /> */}
         </Stack.Navigator>
       </NavigationContainer>
