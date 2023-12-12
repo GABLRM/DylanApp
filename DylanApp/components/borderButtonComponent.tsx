@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import { colors } from '../assets/Colors'
 
@@ -9,15 +9,17 @@ type Props = {
 const BorderButtonComponent = (props: Props) => {
     return (
         <View>
-            <LinearGradient
-                colors={['#4A90E2', '#28A544']}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 0 }}
-                style={styles.linearGradient}>
-                <View style={styles.innerContainer}>
-                    <Text style={styles.buttonText}>{props.title}</Text>
-                </View>
-            </LinearGradient>
+            <TouchableOpacity>
+                <LinearGradient
+                    colors={['#4A90E2', '#28A544']}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                    style={styles.linearGradient}>
+                    <View style={styles.innerContainer}>
+                        <Text style={styles.buttonText}>{props.title}</Text>
+                    </View>
+                </LinearGradient>
+            </TouchableOpacity>
         </View>
     );
 };

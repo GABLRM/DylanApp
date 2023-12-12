@@ -43,7 +43,7 @@ export const NavbarComponent = ({ state, navigation }: BottomTabBarProps) => {
 
 const styles = StyleSheet.create({
     navbarContainer: {
-        backgroundColor: colors.background,
+        backgroundColor: colors.backgroundLight,
         position: 'absolute',
         display: 'flex',
         width: Dimensions.get("window").width,
