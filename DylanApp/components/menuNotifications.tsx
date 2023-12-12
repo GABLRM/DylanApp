@@ -1,56 +1,89 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { colors } from "../assets/Colors";
+import { ScrollView } from "react-native";
 
 type Message = {
-    petName: string;
-    pathPetPic: any;
-}
+  petName: string;
+  pathPetPic: string;
+};
 
-// !!TODO: Fix this with the realpetname with the API
-// const setPetName = (petName: string) => {
-//   return petName;
-// }
-// const setPathPetPic = (pathPetPic: string) => {
-//   return pathPetPic;
-// }
+type Dog = {
+  id: string;
+  name: string;
+  age_number: string;
+  sex_label: string;
+  races_label: string;
+  description: string;
+  image: string;
+};
 
 const textReturn = "<    Back";
 
-const petData = [
-  { petName: "Dylaqfgshtdjykufthdsdfqsqferzgsetydrftukn1", pathPetPic: require("../assets/chien.png") },
-  { petName: "Dylan2", pathPetPic: require("../assets/chien.png") },
-  { petName: "Dylan3", pathPetPic: require("../assets/chien.png") },
-];
-
-
 export const MenuNotificationsScreen = (navigation: any) => {
-  return (
-    <View style={styleMenu.container}>
-      <TouchableOpacity onPress={() => navigation.navigate('Card') } style={styleMenu.textBack}>
-        <Text style={styleMenu.textColor}>{textReturn}</Text>
-      </TouchableOpacity>
-      <View style={styleMenu.containerNotifications}>
-        {petData.map((item, index) => (
-          <View key={index} style={{width: "100%"}}>
-            <MenuNotifications
-              key={index}
-              petName={item.petName}
-              pathPetPic={item.pathPetPic}
-            />
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState<Dog[]>();
+
+  const getDogs = async () => {
+    try {
+      const response = await fetch(
+        "https://www.la-spa.fr/app/wp-json/spa/v1/animals/search/?api=1&species=chien&paged=1&seed=789229258975902"
+      );
+      const json = await response.json();
+      setData(json.results);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    for (let i = 0; i < 3; i++) {
+      getDogs();
+    }
+  }, []);
+
+  if (!isLoading) {
+    return (
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          flexGrow: 1,
+          justifyContent: "center",
+          width: "100%",
+        }}
+      >
+        <View style={styleMenu.container}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Card")}
+            style={styleMenu.textBack}
+          >
+            <Text style={styleMenu.textColor}>{textReturn}</Text>
+          </TouchableOpacity>
+          <View style={styleMenu.containerNotifications}>
+            {data?.map((dog, index) => (
+              <View key={index} style={{ width: "100%" }}>
+                <MenuNotifications
+                  key={index}
+                  petName={dog.name}
+                  pathPetPic={dog.image}
+                />
+              </View>
+            ))}
           </View>
-        ))}
-      </View>
-    </View>
-  );
+        </View>
+      </ScrollView>
+    );
+  }
 };
 
-export const MenuNotifications = ({petName, pathPetPic}: Message) => {
+export const MenuNotifications = ({ petName, pathPetPic }: Message) => {
   const alertPress = () => {
     alert("Your pet can get a new friend!");
-  }
-  
+  };
+
   return (
     <LinearGradient
       colors={["#4A90E2", "#28A544"]}
@@ -59,16 +92,16 @@ export const MenuNotifications = ({petName, pathPetPic}: Message) => {
       style={styleMenu.linearGradient}
     >
       <View style={styleMenu.boxNotification}>
-        <Image
-          source={pathPetPic}
-          style={styleMenu.image}
-        />
+        <Image source={{ uri: pathPetPic }} style={styleMenu.image} />
         <View style={styleMenu.boxText}>
           <Text style={styleMenu.textNotification}>
-            Your dog, <Text style={{fontWeight: "400"}}>{petName}</Text>, has a new match!
+            <Text style={{ fontWeight: "400" }}>{petName}</Text>, want to be
+            your dog's friend!
           </Text>
           <View style={styleMenu.littleButton}>
-            <Text style={styleMenu.littleButtonText} onPress={alertPress}>Send a message!</Text>
+            <Text style={styleMenu.littleButtonText} onPress={alertPress}>
+              Send a message!
+            </Text>
           </View>
         </View>
       </View>
