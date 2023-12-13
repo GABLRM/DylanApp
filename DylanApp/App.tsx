@@ -15,9 +15,9 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Onboarding" component={Onboarding} />
           <Stack.Screen name="Home" component={HomeBottomTab} />
           <Stack.Screen name="Match" component={MatchScreen} />
-          {/* <Stack.Screen name="Onboarding" component={Onboarding} /> */}
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>

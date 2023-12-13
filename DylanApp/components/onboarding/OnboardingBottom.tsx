@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 
 import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
-import { AntDesign } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons';
 import Svg, { G, Circle } from 'react-native-svg';
 import { colors } from '../../assets/Colors';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -17,20 +17,21 @@ type Data = {
     scrollTo: any;
 };
 
+
 export const OnboardingBottom = (data: Data) => {
 
     if (data.currentIndex !== onboardingSlides.length - 1) {
         return (
             <View style={styles.container} >
-                <NextButton percentage={(data.currentIndex + 1) * (100 / onboardingSlides.length)} scrollTo={ data.scrollTo } />
+                <NextButton percentage={(data.currentIndex + 1) * (100 / onboardingSlides.length)} scrollTo={data.scrollTo} />
                 <Paginator items={onboardingSlides} scrollX={data.scrollX} />
             </View>
         )
     } else {
         return (
             <View style={styles.container}>
-                <FullButtonComponent title="Register" />
-                <BorderButtonComponent title="Login" />
+                <FullButtonComponent title="Register" navigate='Home' />
+                <BorderButtonComponent title="Login" navigate='Home' />
             </View>
         )
     }

@@ -1,14 +1,19 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from "@react-navigation/native";
 
 type Props = {
     title: string
+    navigate: string
 }
+
+
 const FullButtonComponent = (props: Props,) => {
+    const navigation = useNavigation();
     return (
         <View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate(props.navigate)}>
                 <LinearGradient
                     start={{ x: 0.1, y: 0.7 }} end={{ x: 1.2, y: 0.5 }}
                     locations={[0.1, 0.9]}

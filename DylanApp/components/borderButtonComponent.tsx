@@ -2,14 +2,17 @@ import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import { colors } from '../assets/Colors'
+import { useNavigation } from "@react-navigation/native";
 
 type Props = {
     title: string
+    navigate : string
 }
 const BorderButtonComponent = (props: Props) => {
+    const navigation = useNavigation()
     return (
         <View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate(props.navigate)}>
                 <LinearGradient
                     colors={['#4A90E2', '#28A544']}
                     start={{ x: 0, y: 0 }}
