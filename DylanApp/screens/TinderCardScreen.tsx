@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { colors } from '../assets/Colors';
 import { Card } from '../components/cardComponent';
-import FooterCard from '../components/footerCardComponent';
 import CardsSwipe from 'react-native-cards-swipe';
 import { useNavigation } from '@react-navigation/native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faHeart, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 type Dog = {
   id: string;
@@ -49,6 +51,7 @@ export const TinderCardScreen = () => {
     return (
       <View style={styles.container}>
         <CardsSwipe
+          ref={swiper => { this.swiper = swiper }}
           animDuration={400}
           cards={data}
           onSwipedRight={onSwipedRight}
@@ -63,7 +66,34 @@ export const TinderCardScreen = () => {
             />
           )}
         />
-        <FooterCard />
+        <View style={styles.footerContainer}>
+          <View>
+            <LinearGradient
+              colors={['#4A90E2', '#28A544']}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={styles.linearGradient}>
+              <View style={styles.innerContainer}>
+                <TouchableOpacity onPress={() => { this.swiper.swipeLeft() }}>
+                  <FontAwesomeIcon icon={faXmark} size={40} color={colors.blue} />
+                </TouchableOpacity>
+              </View>
+            </LinearGradient>
+          </View>
+          <View>
+            <LinearGradient
+              colors={['#4A90E2', '#28A544']}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={styles.linearGradient}>
+              <View style={styles.innerContainer}>
+                <TouchableOpacity onPress={() => { this.swiper.swipeRight() }}>
+                  <FontAwesomeIcon icon={faHeart} size={35} color={colors.blue} />
+                </TouchableOpacity>
+              </View>
+            </LinearGradient>
+          </View>
+        </View>
       </View>
     );
   }
@@ -74,5 +104,27 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
     alignItems: 'center',
+  },
+  footerContainer: {
+    position: "absolute",
+    bottom: 100,
+    width: 240,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  linearGradient: {
+    marginBottom: 10,
+    height: 60,
+    width: 60,
+    borderRadius: 40,
+  },
+  innerContainer: {
+    borderRadius: 39,
+    flex: 1,
+    margin: 3,
+    backgroundColor: colors.background,
+    justifyContent: 'center',
+    alignItems: "center",
   },
 });
