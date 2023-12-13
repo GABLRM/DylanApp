@@ -4,6 +4,8 @@ import MatchComponent from "../components/MatchComponent"
 import { colors } from '../assets/Colors';
 import { MenuNotificationsScreen } from '../components/menuNotifications';
 
+
+
 export const NotificationScreen = () => {
     return (
         <View style={styles.container}>
