@@ -7,7 +7,11 @@ import { colors } from "../assets/Colors"
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
 
-const MatchComponent = () => {
+type Props = {
+    dogImage: string;
+  };
+
+const MatchComponent = (props : Props) => {
     return (
         <View style={styles.globalContainer}>
             <Image
@@ -31,11 +35,11 @@ const MatchComponent = () => {
                             </View>
                             <Image
                                 style={styles.imageDeux}
-                                source={require('../assets/images/dodge_glasses.png')} />
+                                source={{uri: props.dogImage}} />
                         </View>
-                        <FullButtonComponent title="Send A Message" />
+                        <FullButtonComponent title="Send A Message" navigate="Notifications"/>
                         <View style={styles.margin}></View>
-                        <BorderButtonComponent title="Keep Swipping" />
+                        <BorderButtonComponent title="Keep Swipping" navigate="Matches" />
                     </View>
                 </View>
             </LinearGradient>

@@ -41,17 +41,19 @@ export const TinderCardScreen = () => {
     getDogs();
   }, []);
 
-  const onSwipedRight = () => {
-    setTimeout(() => {
-      navigation.navigate('Match')
-    }, 500);
-  }
-
   if (!isLoading) {
+    const onSwipedRight = () => {
+      setTimeout(() => {
+        const matchedDogImage = data;
+        console.log(matchedDogImage);
+        navigation.navigate('Match', { dogImage: matchedDogImage });
+      }, 500);
+    }
     return (
       <View style={styles.container}>
         <CardsSwipe
           ref={swiper => { this.swiper = swiper }}
+          initialIndex={Math.floor(Math.random() * data.length)}
           animDuration={400}
           cards={data}
           onSwipedRight={onSwipedRight}
