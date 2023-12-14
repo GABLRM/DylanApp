@@ -6,12 +6,13 @@ import BorderButtonComponent from "./borderButtonComponent";
 import { colors } from "../assets/Colors"
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
+import { useRoute } from "@react-navigation/native";
 
-type Props = {
-    dogImage: string;
-  };
-
-const MatchComponent = (props : Props) => {
+const MatchComponent = () => {
+    const route = useRoute();
+    const { matchedDog } = route.params;
+    const { profileDog } = route.params
+    console.log(matchedDog)
     return (
         <View style={styles.globalContainer}>
             <Image
@@ -29,15 +30,15 @@ const MatchComponent = (props : Props) => {
                         <View style={styles.imageContainer}>
                             <Image
                                 style={styles.imageUn}
-                                source={require('../assets/images/dodge.png')} />
+                                source={{uri : profileDog.image }} />
                             <View style={styles.innerImageContainer}>
                                 <FontAwesomeIcon icon={faPaw} size={30} style={styles.paw} />
                             </View>
                             <Image
                                 style={styles.imageDeux}
-                                source={{uri: props.dogImage}} />
+                                source={{ uri: matchedDog.image }} />
                         </View>
-                        <FullButtonComponent title="Send A Message" navigate="Notifications"/>
+                        <FullButtonComponent title="Send A Message" navigate="Notifications" />
                         <View style={styles.margin}></View>
                         <BorderButtonComponent title="Keep Swipping" navigate="Matches" />
                     </View>
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.background,
     },
     paw: {
-        position: 'absolute',   
+        position: 'absolute',
         top: 10,
         zIndex: 100,
         color: colors.white,

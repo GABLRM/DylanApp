@@ -22,6 +22,9 @@ type Dog = {
 export const TinderCardScreen = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState<Dog[]>([]);
+  const [matchedDog, setMatchedDog] = useState<Dog | null>(null);
+  const [profileDog, setProfileDog] = useState<Dog | undefined>(undefined);
+
 
   const navigation = useNavigation()
 
@@ -42,13 +45,16 @@ export const TinderCardScreen = () => {
   }, []);
 
   if (!isLoading) {
-    const onSwipedRight = () => {
+    const onSwipedRight = (index: number) => {
+      const matchedDog = data[index];
+      const profileDog = data[0];
+      setProfileDog(profileDog);
+      setMatchedDog(matchedDog);
       setTimeout(() => {
-        const matchedDogImage = data;
-        console.log(matchedDogImage);
-        navigation.navigate('Match', { dogImage: matchedDogImage });
+        navigation.navigate('Match', { matchedDog, profileDog });
       }, 500);
-    }
+    };
+
     return (
       <View style={styles.container}>
         <CardsSwipe
@@ -59,7 +65,7 @@ export const TinderCardScreen = () => {
           onSwipedRight={onSwipedRight}
           renderCard={(card) => (
             <Card
-              key={card.name}
+              key={card.id}
               name={card.name}
               source={card.image}
               sexe={card.sex_label}

@@ -21,7 +21,7 @@ export const ProfileScreen = () => {
       try {
         const response = await fetch('https://www.la-spa.fr/app/wp-json/spa/v1/animals/search/?api=1&species=chien&paged=1&seed=789229258975902');
         const json = await response.json();
-        setData(json.results[Math.floor(Math.random() * json.results.length)]);
+        setData(json.results[0]);
       } catch (error) {
         console.error(error);
       } finally {
