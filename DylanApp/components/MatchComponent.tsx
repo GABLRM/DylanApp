@@ -12,7 +12,6 @@ const MatchComponent = () => {
     const route = useRoute();
     const { matchedDog } = route.params;
     const { profileDog } = route.params
-    console.log(matchedDog)
     return (
         <View style={styles.globalContainer}>
             <Image
