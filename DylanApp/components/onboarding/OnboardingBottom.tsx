@@ -1,10 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-
-import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
-import Svg, { G, Circle } from 'react-native-svg';
-import { colors } from '../../assets/Colors';
-import { LinearGradient } from 'expo-linear-gradient';
+import React from 'react';
+import { View, StyleSheet, Animated } from 'react-native';
 import { NextButton } from './NextButton';
 import { Paginator } from './Paginator';
 import { onboardingSlides } from './OnboardingSlides';
@@ -16,7 +11,6 @@ type Data = {
     scrollX: Animated.Value;
     scrollTo: any;
 };
-
 
 export const OnboardingBottom = (data: Data) => {
 

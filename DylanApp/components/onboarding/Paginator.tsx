@@ -1,18 +1,18 @@
 import React from 'react';
-import { View, Text, StyleSheet, Animated, useWindowDimensions } from 'react-native';
+import { View, StyleSheet, Animated, useWindowDimensions } from 'react-native';
 import { ItemsSlidesType } from './OnboardingSlides';
 import { colors } from '../../assets/Colors';
 
 type Data = {
     items: Array<ItemsSlidesType>;
     scrollX: Animated.Value;
-  };
+};
 
-export const Paginator = ( data  : Data) => {
+export const Paginator = (data: Data) => {
     const { width } = useWindowDimensions();
 
     return (
-        <View style={{flexDirection: 'row', height: 64}}>
+        <View style={{ flexDirection: 'row', height: 64 }}>
             {data.items.map((_, index) => {
                 const inputRange = [(index - 1) * width, index * width, (index + 1) * width];
 
@@ -28,7 +28,7 @@ export const Paginator = ( data  : Data) => {
                     extrapolate: 'clamp',
                 })
 
-                return <Animated.View style={[styles.dot, {width: dotWidth, opacity : dotOpacity}]} key={index.toString()} />
+                return <Animated.View style={[styles.dot, { width: dotWidth, opacity: dotOpacity }]} key={index.toString()} />
             })}
         </View>
     );

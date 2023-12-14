@@ -1,9 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Image, Text, Dimensions } from 'react-native';
-
 import { LinearGradient } from "expo-linear-gradient";
 import { colors } from "../assets/Colors";
-
 
 type Props = {
     name: string;
@@ -18,7 +16,7 @@ const { height, width } = Dimensions.get("screen")
 export const Card = (props: Props) => {
     return (
         <View style={styles.card}>
-            <Image source={{uri:  props.source,}} style={styles.image} />
+            <Image source={{ uri: props.source, }} style={styles.image} />
             <LinearGradient
                 colors={['transparent', 'rgba(0,0,0,.9)']}
                 style={styles.linearGradient}

@@ -11,7 +11,6 @@ export const MatchScreen = () => {
     )
 }
 
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,

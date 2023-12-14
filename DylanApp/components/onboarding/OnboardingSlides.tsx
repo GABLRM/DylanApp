@@ -5,7 +5,7 @@ export type ItemsSlidesType = {
     description: string;
 };
 
-export const onboardingSlides : Array<ItemsSlidesType> = [
+export const onboardingSlides: Array<ItemsSlidesType> = [
     {
         id: '1',
         title: 'Welcome to Dylan!',

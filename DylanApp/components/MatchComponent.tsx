@@ -30,13 +30,11 @@ const MatchComponent = () => {
                         <View style={styles.imageContainer}>
                             <Image
                                 style={styles.imageUn}
-                                source={{uri : profileDog.image }} />
+                                source={{ uri: profileDog.image }} />
                             <View style={styles.innerImageContainer}>
                                 <FontAwesomeIcon icon={faPaw} size={30} style={styles.paw} />
                             </View>
-                            <Image
-                                style={styles.imageDeux}
-                                source={{ uri: matchedDog.image }} />
+                            <Image style={styles.imageDeux} source={{ uri: matchedDog.image }} />
                         </View>
                         <FullButtonComponent title="Send A Message" navigate="Notifications" />
                         <View style={styles.margin}></View>
@@ -79,15 +77,6 @@ const styles = StyleSheet.create({
         backgroundColor: colors.background,
         justifyContent: 'center',
         alignItems: 'center',
-    },
-    buttonText: {
-        fontSize: 18,
-        fontFamily: 'Gill Sans',
-        fontWeight: 'bold',
-        textAlign: 'center',
-        margin: 10,
-        color: '#000',
-        backgroundColor: colors.background
     },
     innerInnerContainer: {
         backgroundColor: colors.background,

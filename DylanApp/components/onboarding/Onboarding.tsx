@@ -1,10 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { View, Text, StyleSheet, FlatList, Animated, ViewToken } from 'react-native'
-
+import { View, StyleSheet, FlatList, Animated, ViewToken } from 'react-native'
 import { OnboardingItem } from './OnboardingItem';
-import { Paginator } from './Paginator';
 import { onboardingSlides } from './OnboardingSlides';
-import { NextButton } from './NextButton';
 import { OnboardingBottom } from './OnboardingBottom';
 import { colors } from '../../assets/Colors';
 
@@ -23,7 +20,7 @@ export const Onboarding = () => {
 
     const scrollTo = () => {
         if (currentIndex < onboardingSlides.length - 1) {
-            (slidesRef as any).current.scrollToIndex({index: currentIndex + 1})
+            (slidesRef as any).current.scrollToIndex({ index: currentIndex + 1 })
         }
     }
 
@@ -47,11 +44,7 @@ export const Onboarding = () => {
                     ref={slidesRef}
                 />
             </View>
-            {/* <View style={{ flex: 1, }} >
-                <NextButton percentage={(currentIndex + 1) * (100 / onboardingSlides.length)} scrollTo={ scrollTo } />
-                <Paginator items={onboardingSlides} scrollX={scrollX} />
-            </View> */}
-            <OnboardingBottom currentIndex={ currentIndex } scrollX={ scrollX } scrollTo={ scrollTo }/>            
+            <OnboardingBottom currentIndex={currentIndex} scrollX={scrollX} scrollTo={scrollTo} />
         </View>
     )
 }

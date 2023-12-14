@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 
 type Props = {
     title: string
-    navigate : string
+    navigate: string
 }
 const BorderButtonComponent = (props: Props) => {
     const navigation = useNavigation()

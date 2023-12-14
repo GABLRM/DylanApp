@@ -14,23 +14,23 @@ type Props = {
 export const ProfileComponent = (props: Props) => {
     return (
         <View style={styles.globalContainer}>
-            <Image style={styles.profilePicture} source={{uri:  props.imageLink ,}} />
+            <Image style={styles.profilePicture} source={{ uri: props.imageLink, }} />
             <View style={styles.profileDetailsContainer}>
                 <View style={styles.profileDetails}>
                     <View style={styles.profileMain}>
-                        <Text style={styles.profileName}>{ props.name.replaceAll(" réservée", "").replaceAll(" réservé", "") }</Text>
-                        <Text style={styles.detailsDescription}>{ props.age }, { props.sexe }</Text>
-                        <Text style={styles.detailsDescription}>Race : { props.race }</Text>
+                        <Text style={styles.profileName}>{props.name.replaceAll(" réservée", "").replaceAll(" réservé", "")}</Text>
+                        <Text style={styles.detailsDescription}>{props.age}, {props.sexe}</Text>
+                        <Text style={styles.detailsDescription}>Race : {props.race}</Text>
                     </View>
                     <Text style={styles.detailsTitle}>About Me</Text>
                     <ScrollView
                         showsVerticalScrollIndicator={false}
-                        >
-                        <Text style={styles.detailsAboutMe}>{ props.description.replaceAll("<br />", "") }</Text>
+                    >
+                        <Text style={styles.detailsAboutMe}>{props.description.replaceAll("<br />", "")}</Text>
                     </ScrollView>
                 </View>
             </View>
-        </View> 
+        </View>
     )
 }
 
@@ -56,13 +56,6 @@ const styles = StyleSheet.create({
         color: colors.white,
         fontSize: 40,
         fontWeight: "800",
-    },
-    profileDescription: {
-        textAlign: "center",
-        marginTop: 5,
-        color: colors.white,
-        fontSize: 20,
-        fontWeight: "200",
     },
     profileDetailsContainer: {
         flex: 1,

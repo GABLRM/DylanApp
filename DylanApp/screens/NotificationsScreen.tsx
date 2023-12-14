@@ -1,10 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from "react-native"
-import MatchComponent from "../components/MatchComponent"
 import { colors } from '../assets/Colors';
 import { MenuNotificationsScreen } from '../components/menuNotifications';
-
-
 
 export const NotificationScreen = () => {
     return (
@@ -13,7 +10,6 @@ export const NotificationScreen = () => {
         </View>
     )
 }
-
 
 const styles = StyleSheet.create({
     container: {

@@ -8,7 +8,6 @@ type Props = {
     navigate: string
 }
 
-
 const FullButtonComponent = (props: Props,) => {
     const navigation = useNavigation();
     return (
